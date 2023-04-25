@@ -1,0 +1,118 @@
+<div class="ms-5 shadow-lg pt-3 ps-5 pe-5 pb-3 me-3">
+    <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
+</div>
+<div class="col-md-11 ms-5 ps-5 pt-1">
+    <h2 class="mt-5 mb-3 ms-5">Edit Employee</h2>
+    <p-toast></p-toast>
+    <div class="d-flex justify-content-end">
+        <div class="border shadow-lg p-3 mb-5 me-5">
+            <p-accordion [multiple]="true">
+                <p-accordionTab header="Login Details">
+                    <div class="accordian d-flex row justify-content-evenly">
+                        <div class="col-md-6 col-sm-12 col-xl-3">
+                            <div class="m-2 d-flex flex-column">
+                                <label>Login ID</label>
+                                <input pInputText type="text" class="p-inputtext-sm" placeholder="johndoe@gmail.com"
+                                    disabled />
+                            </div>
+                            <div class="m-2 d-flex flex-column">
+                                <label>Title</label>
+                                <p-dropdown [options]="title" optionLabel="name"></p-dropdown>
+                            </div>
+                            <div class="m-2 d-flex flex-column">
+                                <label>Valid From</label>
+                                <p-calendar [showIcon]="true"></p-calendar>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xl-3">
+                            <div class="m-2 d-flex flex-column">
+                                <label>First Name</label>
+                                <input pInputText type="text" class="p-inputtext-sm" placeholder="john" />
+                            </div>
+                            <div class="m-2 d-flex flex-column">
+                                <label>Department</label>
+                                <p-dropdown [options]="department" optionLabel="name"></p-dropdown>
+                            </div>
+                            <div class="m-2 d-flex flex-column">
+                                <label>Valid To</label>
+                                <p-calendar [showIcon]="true"></p-calendar>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xl-3">
+                            <div class="m-2 d-flex flex-column">
+                                <label>Middle Name</label>
+                                <input pInputText type="text" class="p-inputtext-sm" />
+                            </div>
+                            <div class="m-2 d-flex flex-column">
+                                <label>MNX Location</label>
+                                <p-dropdown [options]="mnx" optionLabel="name"></p-dropdown>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xl-3">
+                            <div class="m-2 d-flex flex-column">
+                                <label>Last Name</label>
+                                <input pInputText type="text" class="p-inputtext-sm" placeholder="doe" />
+                            </div>
+                        </div>
+                    </div>
+                </p-accordionTab>
+                <p-divider></p-divider>
+                <p-accordionTab header="Contact Details">
+                    <div class="d-flex row justify-content-evenly">
+                        <div class="col-md-6 col-sm-12 col-xl-3">
+                            <div class="m-2 d-flex flex-row">
+                                <div class="d-flex flex-column col-8">
+                                    <label>Main Phone</label>
+                                    <input pInputText type="text" class="p-inputtext-sm" placeholder="123 456 7890" />
+                                </div>
+                                <div class="d-flex flex-column mt-4 ms-2 col-4">
+                                    <input pInputText type="text" class="p-inputtext-sm" />
+                                    <label>Ext</label>
+                                </div>
+                            </div>
+                            <div class="m-2 d-flex flex-column">
+                                <label>Email</label>
+                                <input pInputText type="text" class="p-inputtext-sm" placeholder="johndoe@gmail.com" />
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xl-3">
+                            <div class="m-2 d-flex flex-row">
+                                <div class="d-flex flex-column col-8">
+                                    <label>Work Phone</label>
+                                    <input pInputText type="text" class="p-inputtext-sm" placeholder="123 456 7890" />
+                                </div>
+                                <div class="d-flex flex-column mt-4 ms-2 col-4">
+                                    <input pInputText type="text" class="p-inputtext-sm" />
+                                    <label>Ext</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xl-3">
+                            <div class="m-2 d-flex flex-column">
+                                <label>Cell Phone</label>
+                                <input pInputText type="text" class="p-inputtext-sm" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xl-3">
+                            <div class="m-2 d-flex flex-column">
+                                <label>Fax</label>
+                                <input pInputText type="text" class="p-inputtext-sm" />
+                            </div>
+                        </div>
+                    </div>
+                </p-accordionTab>
+                <p-divider></p-divider>
+                <p-accordionTab header="Assign Role" class="row">
+                    <p-multiSelect [options]="roles" class="col-4" display="chip" optionDisabled="isActive"
+                        defaultLabel="Select Role(s)" optionLabel="name">
+                    </p-multiSelect>
+                </p-accordionTab>
+                <p-divider></p-divider>
+            </p-accordion>
+            <div class="d-flex justify-content-end me-5">
+                <p-button styleClass="p-button-success" (click)="update()" label="Save"></p-button>
+            </div>
+        </div>
+    </div>
+</div>

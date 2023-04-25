@@ -1,0 +1,16 @@
+.profile{
+    height: 5vh;
+    width: 5vh;
+}
+.p-menubar .active{
+    font-weight: bolder;
+    border-bottom: solid !important;
+    border-color: orange !important;
+}
+.img{
+    height: 5vh;
+    width: 25vh;
+}
+@media only screen and (max-width: 600px){
+   
+}

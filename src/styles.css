@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css");
+
+.p-menubar .active{
+    font-weight: bolder;
+    border-bottom: solid !important;
+    border-color: #ee522c !important;
+}
+@media only screen and (max-width: 576px){
+    .sidebar{
+       visibility: hidden;       
+    }
+   }

@@ -1,0 +1,36 @@
+<p-toast></p-toast>
+<p-menubar [model]="data" class="fixed-top">
+    <ng-template pTemplate="start">
+        <div class="">
+            <img src="assets\images\subh-key-768x156.jpg" class="mr-2 img">
+        </div>
+    </ng-template>
+    <ng-template pTemplate="end" class="row">
+        <button type="button" class="btn btn-primary me-2"><i class="pi pi-plus me-1"></i>Create
+            Order</button>
+        <input type="text" pInputText placeholder="Search" class="border p-1 pb-2 rounded-2" />
+        <p-button styleClass="p-button-outlined p-button-rounded p-button-sm me-2 ms-2 p-2">Search</p-button>
+        <img #btn src="assets\images\am-a-19-year-old-multimedia-artist-student-from-manila--21.png"
+            class="ms-1 profile" (click)="menu.toggle($event)">
+        <p-tieredMenu #menu [model]="items" [popup]="true" styleClass="mt-2" appendTo="body"></p-tieredMenu>
+    </ng-template>
+</p-menubar>
+<p-dialog header="Change Password" [(visible)]="visible" [modal]="true" [style]="{width: '50vw',height:'50vh'}">
+    <div>
+        <label class="w-50 m-3">Current Password</label>
+        <p-password [toggleMask]="true" [feedback]=false placeholder="Enter Current Password"></p-password>
+    </div>
+    <div>
+        <label class="w-50 m-3">New Password</label>
+        <p-password [toggleMask]="true" placeholder="Enter New Password"></p-password>
+    </div>
+    <div>
+        <label class="w-50 m-3">Confirm Password</label>
+        <p-password [toggleMask]="true" [feedback]=false placeholder="Enter Confirm Password"></p-password>
+    </div>
+    <div class="mt-4 mb-0 d-flex justify-content-end">
+        <p-button label="Submit" (click)="submit()"></p-button>
+        <p-button label="Cancel" styleClass="p-button-secondary  p-button-text"></p-button>
+    </div>
+</p-dialog>
+<div class="mb-5 pb-3"></div>

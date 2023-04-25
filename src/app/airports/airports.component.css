@@ -1,0 +1,9 @@
+a{
+    cursor: pointer;
+}
+label{
+    margin-bottom: 5px;
+}
+input{
+    height: 30px;
+}

@@ -1,0 +1,18 @@
+:host ::ng-deep p-multiselect
+.p-multiselect-label {
+width: 400px !important;}
+@media only screen and (max-width: 600px){
+    :host ::ng-deep p-multiselect
+    .p-multiselect-label {
+    width: 400px !important;}
+}
+@media only screen and (max-width: 500px){
+    :host ::ng-deep p-multiselect
+    .p-multiselect-label {
+    width: 200px !important;}
+}
+@media only screen and (max-width: 350px){
+    :host ::ng-deep p-multiselect
+    .p-multiselect-label {
+    width: 120px !important;}
+}

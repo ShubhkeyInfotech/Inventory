@@ -1,0 +1,77 @@
+<div class="ms-5">
+    <h2 class="mt-5 ms-5">Airport Search</h2>
+</div>
+<div class="border m-5 p-5 d-flex justify-content-betwwen ">
+    <div class="d-flex flex-row ms-5">
+        <div class="ms-5 d-flex flex-column">
+            <div class="d-flex flex-row justify-content-evenly">
+                <div class="d-flex flex-column ms-5">
+                    <label for="airportID">Airport ID</label>
+                    <input type="text" id="airportID">
+                </div>
+                <div class="d-flex flex-column ms-5">
+                    <label for="airportname">Airport Name</label>
+                    <input type="text" id="airportname">
+                </div>
+                <div class="d-flex flex-column ms-5">
+                    <label for="city">City</label>
+                    <input type="text" id="city">
+                </div>
+            </div>
+            <div>
+                <div class="d-flex flex-row justify-content-evenly mt-3">
+                    <div class="d-flex ms-5 flex-column">
+                        <label for="airportID">Country</label>
+                        <select class="pe-5" style="width: 190px;height: 28px;">
+                            <option selected disabled>Select</option>
+                            <option *ngFor="let country of countries">{{country.name}}</option>
+                        </select>
+                    </div>
+                    <div class="d-flex ms-5 flex-column">
+                        <label for="airportname">State/Province</label>
+                        <input type="text" id="airportname">
+                    </div>
+                    <div class="mt-4 p-2 d-flex ms-5 flex-row" style="width:190px;">
+                        <input type="checkbox" id="major">
+                        <label for="major" class="mt-1 ms-2">Major</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-auto ms-5">
+            <div class="d-flex float-end">
+                <p-button styleClass="p-button-sm" label="Search" style="height: 25px;"></p-button>
+                <a class="text-primary ms-2 mt-2">Less Filters <i class="pi pi-angle-double-up"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="m-5 ps-5 border">
+
+    <p-table [value]="data" [tableStyle]="{'min-width': '60rem'}" dataKey="id" [rows]="10"
+        [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="airportID" style="width:20%">AirportID <p-sortIcon field="airportID"></p-sortIcon>
+                </th>
+                <th pSortableColumn="name" style="width:20%">Name <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="country" style="width:20%">Country <p-sortIcon field="country"></p-sortIcon></th>
+                <th pSortableColumn="city" style="width:20%">City <p-sortIcon field="city"></p-sortIcon></th>
+                <th pSortableColumn="state" style="width:20%">state <p-sortIcon field="state"></p-sortIcon></th>
+                <th pSortableColumn="major" style="width:20%">Major <p-sortIcon field="Major"></p-sortIcon></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{product.airportID}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.country}}</td>
+                <td>{{product.city}}</td>
+                <td>{{product.state}}</td>
+                <td>{{product.major}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

@@ -1,0 +1,118 @@
+
+<div class="ms-5 mt-5 shadow-lg pt-3 ps-5 pe-5 pb-3 me-3">
+    <p-breadcrumb  [model]="items" [home]="home"></p-breadcrumb>
+</div>
+<div class="ms-5 m-3 pt-3 shadow-lg">
+    <h2 class="ps-5">User Management</h2>
+<div class="d-flex  justify-content-end me-3">
+    <div class="d-flex justify-content-end m-2">
+        <p-dropdown [options]="roles" [(ngModel)]="selectedRoles" (click)='f1()' optionLabel="name"
+            placeholder="Creat User"></p-dropdown>
+    </div>
+</div>
+<div class="d-flex ms-5 justify-content-end me-3">
+
+    <div class="card m-2 col-12">
+        <p-table [columns]="selectedColumns" [value]="users" [tableStyle]="{'min-width': '50rem'}" [rows]="10"
+            [styleClass]="selectedSize" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
+            [scrollable]="true" scrollHeight="400px" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" #myTab>
+            <ng-template pTemplate="caption">
+                <div class="d-flex row">
+                    <div class="d-flex justify-content-start row col-lg-6 ms-2 col-md-6 col-sm-12 div">
+                        <div class=" col-lg-4 col-md-6 mb-2">
+                            <span class="p-input-icon-left">
+                                <i class="pi pi-search"></i>
+                                <input type="text" pInputText placeholder="Search" [(ngModel)]="search"
+                                    (input)="myTab.filterGlobal(search, 'contains')"
+                                    class="col-lg-10 col-md-8 ps-5 h-100" />
+                            </span>
+                        </div>
+                        <div class=" col-lg-4 col-md-6 mb-2">
+                            <button type="button" class="btn btn-primary h-100" (click)="filter = !filter">
+                                Filter<i class="pi pi-filter"></i>
+                            </button>
+                            <p-dialog [modal]=true [(visible)]="filter" header="Filter" [style]="{width: '80vh'}">
+                                <div class="d-flex flex-column">
+                                    <div class="d-flex m-2 justify-content-between">
+                                        <label for="loginname">Login Name</label>
+                                        <input pInputText class="p-inputtext-sm w-50" type="text" for="loginname">
+                                    </div>
+                                    <div class="d-flex m-2 justify-content-between">
+                                        <label for="usertype">User Type</label>
+                                        <input pInputText class="p-inputtext-sm w-50" type="text" id="usertype">
+                                    </div>
+                                    <div class="d-flex m-2 justify-content-between">
+                                        <label for="fname">First Name</label>
+                                        <input pInputText class="w-50 p-inputtext-sm" type="text" id="fname">
+                                    </div>
+                                    <div class="d-flex m-2 justify-content-between">
+                                        <label for="lname">Last Name</label>
+                                        <input pInputText class="w-50 p-inputtext-sm" type="text" id="lname">
+                                    </div>
+                                    <div class="d-flex m-2 justify-content-between">
+                                        <label for="email">Email</label>
+                                        <input pInputText class="w-50 p-inputtext-sm" type="email" id="email">
+                                    </div>
+                                    <div class="d-flex m-2 justify-content-between">
+                                        <label for="mnx">MNX Location</label>
+                                        <p-dropdown [options]="mnx" optionLabel="name" styleClass="w-100"></p-dropdown>
+                                    </div>
+                                    <div class="d-flex m-2 justify-content-between">
+                                        <label for="company">Company</label>
+                                        <p-dropdown [options]="company" optionLabel="name" styleClass="w-100"></p-dropdown>
+                                    </div>
+                                    <div class="d-flex m-2 justify-content-between">
+                                        <label for="department">Department</label>
+                                        <p-dropdown [options]="department" optionLabel="name" styleClass="w-100"></p-dropdown>
+                                    </div>
+                                    <div class="d-flex m-2 justify-content-between">
+                                        <label for="status">Status</label>
+                                        <div class="  d-flex  gap-2">
+                                            <p-radioButton name="pizza" value="active" checked="checked"></p-radioButton>
+                                            <label for="ingredient1" class="ml-2">Active</label>
+                                            <p-radioButton name="pizza" value="inactive"></p-radioButton>
+                                            <label for="ingredient1" class="ml-2">Inactive</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4 mb-0 d-flex justify-content-end">
+                                    <p-button label="Submit" (click)='filter= !filter'></p-button>
+                                    <p-button label="Cancel" (click)='filter= !filter'
+                                        styleClass="p-button-secondary  p-button-text"></p-button>
+                                </div>
+                            </p-dialog>
+                        </div>
+                    </div>
+                    <div class="d-flex col-lg-6 col-sm-12 div justify-content-end">
+                        <div class="ms-2 mb-2">
+                            <p-dropdown [options]="sizes" [(ngModel)]="selectedSize" optionLabel="name"
+                                optionValue="class"></p-dropdown>
+                        </div>
+                        <div class="ms-2">
+                            <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
+                                selectedItemsLabel="{0} columns selected" placeholder="Choose Columns"></p-multiSelect>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                        {{col.header}}<p-sortIcon [field]="col.field"></p-sortIcon>
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product let-columns="columns">
+                <tr>
+                    <td *ngFor="let col of columns">
+                        {{product[col.field]}}
+                    </td>
+                    <td><i routerLink="/edit-employee" class="pi pi-pencil" style="cursor: pointer;"></i></td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+</div>

@@ -1,0 +1,460 @@
+<div class="ms-5 mt-5 shadow-lg pt-3 ps-5 pe-5 pb-3 me-3">
+    <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
+</div>
+<h2 class="mt-5 ms-5 ps-5" *ngIf="role=='Customer'">Create Customer</h2>
+<h2 class="mt-5 ms-5 ps-5" *ngIf="role=='FedEx'">Add FedEx Profile</h2>
+<h2 class="mt-5 ms-5 ps-5" *ngIf="role=='Agent'">Create Agent</h2>
+<h2 class="mt-5 ms-5 ps-5" *ngIf="role==null">Choose Role To Start</h2>
+<p-toast></p-toast>
+<div class="d-flex ms-5 ps-5 p-3 gap-3 border shadow-lg">
+    <div class="flex align-items-center">
+        <p-radioButton name="pizza" value="FedEx" [(ngModel)]="role" inputId="ingredient1"></p-radioButton>
+        <label for="ingredient1" class="ml-2">FedEx</label>
+    </div>
+
+    <div class="flex align-items-center">
+        <p-radioButton name="pizza" value="Customer" [(ngModel)]="role" inputId="ingredient2"></p-radioButton>
+        <label for="ingredient2" class="ml-2">Customer</label>
+    </div>
+
+    <div class="flex align-items-center">
+        <p-radioButton name="pizza" value="Agent" [(ngModel)]="role" inputId="ingredient3"></p-radioButton>
+        <label for="ingredient3" class="ml-2">Agent</label>
+    </div>
+</div>
+<div class="border shadow-lg p-3 mb-5 ms-5 ps-5" *ngIf="role != null">
+    <p-accordion [activeIndex]="0" [multiple]="true">
+        <p-accordionTab header="Login Details">
+            <div *ngIf="role=='FedEx'" class="  d-flex  gap-2">
+                <p-radioButton name="pizza" value="direct" checked="checked" [(ngModel)]="fedextype"></p-radioButton>
+                <label for="ingredient1" class="ml-2">Direct MNX Account</label>
+                <p-radioButton name="pizza" value="fedexean" [(ngModel)]="fedextype"></p-radioButton>
+                <label for="ingredient1" class="ml-2">FedEx EAN</label>
+            </div>
+            <div class="row d-flex justify-content-evenly">
+                <div class="col-md-12 col-sm-12 col-xl-12 row">
+                    <div class="m-2 col-xl-2 col-md-4 d-flex flex-column">
+                        <label>Login ID</label>
+                        <input pInputText type="text" class="p-inputtext-sm" placeholder="johndoe@gmail.com" disabled />
+                    </div>
+                    <div class="m-2 col-xl-2 col-md-4 d-flex flex-column">
+                        <label>First Name</label>
+                        <input pInputText type="text" class="p-inputtext-sm" placeholder="john" />
+                    </div>
+                    <div class="m-2 col-xl-2 col-md-4 d-flex flex-column">
+                        <label>Middle Name</label>
+                        <input pInputText type="text" class="p-inputtext-sm" />
+                    </div>
+                    <div class="m-2 col-xl-2 col-md-4 d-flex flex-column">
+                        <label>Last Name</label>
+                        <input pInputText type="text" class="p-inputtext-sm" placeholder="doe" />
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xl-12 row">
+                    <div class="m-2 col-xl-2 col-md-4 d-flex flex-column">
+                        <label>Title</label>
+                        <p-dropdown optionLabel="name"></p-dropdown>
+                    </div>
+                    <div class="m-2 col-xl-2 col-md-4 d-flex flex-column">
+                        <label>Department</label>
+                        <p-dropdown optionLabel="name"></p-dropdown>
+                    </div>
+                    <div class="m-2 col-xl-2 col-md-4 d-flex flex-column">
+                        <label>MNX Location</label>
+                        <p-dropdown optionLabel="name"></p-dropdown>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xl-12 row">
+                    <div class="m-2 col-xl-2 col-md-4 d-flex flex-column">
+                        <label>Valid From</label>
+                        <p-calendar [showIcon]="true"></p-calendar>
+                    </div>
+                    <div class="m-2 col-xl-2 col-md-4 d-flex flex-column">
+                        <label>Valid To</label>
+                        <p-calendar [showIcon]="true"></p-calendar>
+                    </div>
+                </div>
+            </div>
+        </p-accordionTab>
+        <p-divider></p-divider>
+        <p-accordionTab header="Contact Details">
+            <div class="d-flex row justify-content-evenly">
+                <div class="col-md-6 col-sm-12 col-xl-3">
+                    <div class="m-2 d-flex flex-row">
+                        <div class="d-flex flex-column col-8">
+                            <label>Main Phone</label>
+                            <input pInputText type="text" class="p-inputtext-sm" placeholder="123 456 7890" />
+                        </div>
+                        <div class="d-flex flex-column mt-4 ms-2 col-4">
+                            <input pInputText type="text" class="p-inputtext-sm" />
+                            <label>Ext</label>
+                        </div>
+                    </div>
+                    <div class="m-2 d-flex flex-column">
+                        <label>Email</label>
+                        <input pInputText type="text" class="p-inputtext-sm" placeholder="johndoe@gmail.com" />
+
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 col-xl-3">
+                    <div class="m-2 d-flex flex-row">
+                        <div class="d-flex flex-column col-8">
+                            <label>Work Phone</label>
+                            <input pInputText type="text" class="p-inputtext-sm" placeholder="123 456 7890" />
+                        </div>
+                        <div class="d-flex flex-column mt-4 ms-2 col-4">
+                            <input pInputText type="text" class="p-inputtext-sm" />
+                            <label>Ext</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 col-xl-3">
+                    <div class="m-2 d-flex flex-column">
+                        <label>Cell Phone</label>
+                        <input pInputText type="text" class="p-inputtext-sm" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 col-xl-3">
+                    <div class="m-2 d-flex flex-column">
+                        <label>Fax</label>
+                        <input pInputText type="text" class="p-inputtext-sm" />
+                    </div>
+                </div>
+            </div>
+        </p-accordionTab>
+        <p-divider *ngIf="role=='Agent'"></p-divider>
+        <p-accordionTab header="Account" class="row" *ngIf="role=='Agent'">
+            <div class="d-flex col-lg-12 col-sm-12 div justify-content-end">
+                <div class="ms-2 mb-2">
+                    <p-button (click)="addcourier= !addcourier" label="Add Account"></p-button>
+                    <p-dialog [modal]=true header="Add Account" [(visible)]="addcourier"
+                        [style]="{ width: '80vw', height: '80vh' }">
+                        <p-dialog [modal]=true [(visible)]="filter" header="Filter"
+                            [style]="{ width: '80vw' ,height: '80vh'}">
+                            <div class="row mt-3">
+                                <div class="col-md-3">
+                                    <label>Courier ID</label>
+                                    <input class="col-md-12" pInputText>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label>Name</label>
+                                    <input class="col-md-12" pInputText>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Vehicle Type</label>
+                                    <p-dropdown styleClass="col-md-12" [options]="vehicleType" optionLabel="name"
+                                        optionValue="class"></p-dropdown>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Zip Code</label>
+                                    <input class="col-md-12" pInputText>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-3">
+                                    <label>City</label>
+                                    <input class="col-md-12" pInputText>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label>State</label>
+                                    <p-dropdown styleClass="col-md-12" [options]="state" optionLabel="name"
+                                        optionValue="class"></p-dropdown>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Country</label>
+                                    <p-dropdown styleClass="col-md-12" [options]="country" optionLabel="name"
+                                        optionValue="class"></p-dropdown>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Airport</label>
+                                    <input class="col-md-12" pInputText>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-3">
+                                    <label>Agent Code</label>
+                                    <input class="col-md-12" pInputText>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label>Type</label>
+                                    <p-dropdown styleClass="col-md-12" [options]="type" optionLabel="name"
+                                        optionValue="class"></p-dropdown>
+                                </div>
+                                <div class="col-md-6 mt-5">
+                                    <input type="checkbox">
+                                    <label class="ms-2 me-3">TSA Ceritified</label>
+                                    <input type="checkbox">
+                                    <label class="ms-2 me-3">FDX TSA</label>
+                                </div>
+                            </div>
+                            <div class="mt-4 mb-0 d-flex justify-content-end">
+                                <p-button label="Submit" (click)='filter= !filter'></p-button>
+                                <p-button label="Cancel" (click)='filter= !filter'
+                                    styleClass="p-button-secondary  p-button-text"></p-button>
+                            </div>
+                        </p-dialog>
+                        <div class="d-flex col-lg-12 mt-3 col-sm-12 div justify-content-end">
+                            <p-button icon="pi pi-filter" [style]="{width:'10vh'}"
+                                (click)="filter = !filter">Filter</p-button>
+                            <div class="ms-2 mb-2">
+                                <p-dropdown [options]="sizes" [(ngModel)]="selectedSize" optionLabel="name"
+                                    optionValue="class"></p-dropdown>
+                            </div>
+                        </div>
+                        <p-table [value]="courier" [rows]="10" [showCurrentPageReport]="true"
+                            [rowsPerPageOptions]="[10, 25, 50]" [scrollable]="true" [styleClass]="selectedSize"
+                            scrollHeight="400px" [paginator]="true"
+                            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" #myTab>
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    <th *ngFor="let col of addcouriercol" [pSortableColumn]="col.field">
+                                        {{col.header}}<p-sortIcon [field]="col.field"></p-sortIcon>
+                                    </th>
+                                    <th>Action</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-courier let-columns="columns">
+                                <tr>
+                                    <td *ngFor="let col of addcouriercol">
+                                        {{courier[col.field]}}
+                                    </td>
+                                    <td><i class="pi pi-trash" style="cursor: pointer;"></i></td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                        <div class="mt-4 mb-0 d-flex justify-content-end">
+                            <p-button label="Submit" (click)='addcourier= !addcourier'></p-button>
+                            <p-button label="Cancel" (click)='addcourier= !addcourier'
+                                styleClass="p-button-secondary  p-button-text"></p-button>
+                        </div>
+                    </p-dialog>
+                </div>
+            </div>
+            <p-table [tableStyle]="{'min-width': '50rem'}" [value]="courier" [rows]="10" [showCurrentPageReport]="true"
+                [rowsPerPageOptions]="[10, 25, 50]" [scrollable]="true" scrollHeight="400px" [paginator]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" #myTab>
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of courriercol" [pSortableColumn]="col.field">
+                            {{col.header}}<p-sortIcon [field]="col.field"></p-sortIcon>
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-account let-columns="columns">
+                    <tr>
+                        <td *ngFor="let col of courriercol">
+                            {{account[col.field]}}
+                        </td>
+                        <td><i class="pi pi-trash" style="cursor: pointer;"></i></td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-accordionTab>
+        <p-divider *ngIf="role=='Customer'"></p-divider>
+        <p-accordionTab header="Account" class="row" *ngIf="role=='Customer'">
+            <div class="d-flex col-lg-12 col-sm-12 div justify-content-end">
+                <div class="ms-2 mb-2">
+                    <p-button (click)="addaccount= !addaccount" label="Add Account"></p-button>
+                    <p-dialog [modal]=true header="Add Account" [(visible)]="addaccount"
+                        [style]="{ width: '80vw', height: '80vh' }">
+                        <p-dialog [modal]=true [(visible)]="customerfilter" header="Filter"
+                            [style]="{ width: '80vw' ,height: '80vh'}">
+                            <div class="row mt-3">
+                                <div class="col-md-3">
+                                    <label>Account #</label>
+                                    <input class="col-md-12" pInputText>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label>Name</label>
+                                    <input class="col-md-12" pInputText>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Zip Code</label>
+                                    <input class="col-md-12" pInputText>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>City</label>
+                                    <input class="col-md-12" pInputText>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-3">
+                                    <label>State</label>
+                                    <p-dropdown styleClass="col-md-12" [options]="state" optionLabel="name"
+                                        optionValue="class"></p-dropdown>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Country</label>
+                                    <p-dropdown styleClass="col-md-12" [options]="country" optionLabel="name"
+                                        optionValue="class"></p-dropdown>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Inventory Account</label>
+                                    <div class="col-md-12">
+                                        <input type="checkbox">
+                                        <label class="ms-2 me-3">TSA Ceritified</label>
+                                        <input type="checkbox">
+                                        <label class="ms-2 me-3">FDX TSA</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 mb-0 d-flex justify-content-end">
+                                <p-button label="Submit" (click)='customerfilter= !customerfilter'></p-button>
+                                <p-button label="Cancel" (click)='customerfilter= !customerfilter'
+                                    styleClass="p-button-secondary  p-button-text"></p-button>
+                            </div>
+                        </p-dialog>
+                        <div class="d-flex col-md-12 col-lg-12 mt-3 col-sm-12 div justify-content-end">
+                            <p-button icon="pi pi-filter" [style]="{width:'10vh'}"
+                                (click)="customerfilter = !customerfilter">Filter</p-button>
+                            <div class="ms-2 mb-2">
+                                <p-dropdown [options]="sizes" [(ngModel)]="selectedSize" optionLabel="name"
+                                    optionValue="class"></p-dropdown>
+                            </div>
+                        </div>
+                        <p-table [value]="coustomerAccount" [rows]="10" [showCurrentPageReport]="true"
+                            [rowsPerPageOptions]="[10, 25, 50]" [scrollable]="true" [styleClass]="selectedSize"
+                            scrollHeight="400px" [paginator]="true"
+                            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" #myTab>
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    <th *ngFor="let col of addaccountcol" [pSortableColumn]="col.field">
+                                        {{col.header}}<p-sortIcon [field]="col.field"></p-sortIcon>
+                                    </th>
+                                    <th>Action</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-courier let-columns="columns">
+                                <tr>
+                                    <td *ngFor="let col of addaccountcol">
+                                        {{courier[col.field]}}
+                                    </td>
+                                    <td><i class="pi pi-trash" style="cursor: pointer;"></i></td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                        <div class="mt-4 mb-0 d-flex justify-content-end">
+                            <p-button label="Submit" (click)='addaccount= !addaccount'></p-button>
+                            <p-button label="Cancel" (click)='addaccount= !addaccount'
+                                styleClass="p-button-secondary  p-button-text"></p-button>
+                        </div>
+                    </p-dialog>
+                </div>
+            </div>
+            <p-table [value]="coustomerAccount" [rows]="10" [showCurrentPageReport]="true"
+                [rowsPerPageOptions]="[10, 25, 50]" [scrollable]="true" scrollHeight="400px" [paginator]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" #myTab>
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of customercol" [pSortableColumn]="col.field">
+                            {{col.header}}<p-sortIcon [field]="col.field"></p-sortIcon>
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-account let-columns="columns">
+                    <tr>
+                        <td *ngFor="let col of customercol">
+                            {{account[col.field]}}
+                        </td>
+                        <td><i class="pi pi-trash" style="cursor: pointer;"></i></td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-accordionTab>
+        <p-divider></p-divider>
+        <p-accordionTab header="Assign Role" class="row"
+            *ngIf="fedextype=='direct' || role=='Agent' || role=='Customer'">
+            <p-multiSelect [options]="roles" class="col-4" display="chip" optionDisabled="isActive"
+                defaultLabel="Select Role(s)" optionLabel="name">
+            </p-multiSelect>
+        </p-accordionTab>
+        <p-accordionTab header="Account" class="row" *ngIf="fedextype=='fedexean'">
+            <div class="d-flex col-lg-12 col-sm-12 div justify-content-end">
+                <div class="ms-2 mb-2">
+
+                    <p-button (click)="visible= !visible" label="Add Account"></p-button>
+                    <p-dialog [modal]=true header="Add Account" [(visible)]="visible"
+                        [style]="{ width: '50vw', height: '80vh' }">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>FedEx Customer Code</label>
+                                <input pInputText placeholder="Enter Customer Code" [(ngModel)]="customername">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>Account Name</label>
+                                <input pInputText placeholder="Enter Accoun Name" [(ngModel)]="acname">
+                            </div>
+                            <div class="col-md-4 mt-4">
+                                <p-button [style]="{width:'15vh'}" icon="pi pi-search"
+                                    (click)="filterFedexean()">Search</p-button>
+                            </div>
+                        </div>
+                        <div class="d-flex col-lg-12 mt-3 col-sm-12 div justify-content-end">
+                            <div class="ms-2 mb-2">
+                                <p-dropdown [options]="sizes" [(ngModel)]="selectedSize" optionLabel="name"
+                                    optionValue="class"></p-dropdown>
+                            </div>
+                        </div>
+                        <p-table [value]="account" [rows]="10" [showCurrentPageReport]="true"
+                            [rowsPerPageOptions]="[10, 25, 50]" [scrollable]="true" [styleClass]="selectedSize"
+                            scrollHeight="400px" [paginator]="true"
+                            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" #fedex>
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    <th *ngFor="let col of col" [pSortableColumn]="col.field">
+                                        {{col.header}}<p-sortIcon [field]="col.field"></p-sortIcon>
+                                    </th>
+                                    <th>Action</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-account let-columns="columns">
+                                <tr>
+                                    <td *ngFor="let col of col">
+                                        {{account[col.field]}}
+                                    </td>
+                                    <td><i class="pi pi-trash" style="cursor: pointer;"></i></td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                        <div class="mt-4 mb-0 d-flex justify-content-end">
+                            <p-button label="Submit" (click)='visible= !visible'></p-button>
+                            <p-button label="Cancel" (click)='visible= !visible'
+                                styleClass="p-button-secondary  p-button-text"></p-button>
+                        </div>
+                    </p-dialog>
+                </div>
+            </div>
+            <p-table [tableStyle]="{'min-width': '50rem'}" [value]="account" [rows]="10" [showCurrentPageReport]="true"
+                [rowsPerPageOptions]="[10, 25, 50]" [scrollable]="true" scrollHeight="400px" [paginator]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" #myTab>
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of col" [pSortableColumn]="col.field">
+                            {{col.header}}<p-sortIcon [field]="col.field"></p-sortIcon>
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-account let-columns="columns">
+                    <tr>
+                        <td *ngFor="let col of col">
+                            {{account[col.field]}}
+                        </td>
+                        <td><i class="pi pi-trash" style="cursor: pointer;"></i></td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-accordionTab>
+        <p-divider></p-divider>
+    </p-accordion>
+    <div class="d-flex justify-content-end me-5">
+        <p-button styleClass="p-button-success" (click)="update()" label="Add"></p-button>
+    </div>
+</div>
